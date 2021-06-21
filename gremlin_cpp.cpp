@@ -584,7 +584,7 @@ void Msa::load(string msa_i, string alphabet, double gap){
 		for(int n = 0; n < nrow; n++){
 			if(X_tmp[n][i] == gap_int){gaps++;}
 		}
-		if(gap_cutoff > gaps){
+		if(gap_cutoff > gaps || X_tmp[0][i] != gap_int){  // modification do not remove columns that contain target sequence residuals
 			for(int n = 0; n < nrow; n++){
 				X[n].push_back(X_tmp[n][i]);
 			}
